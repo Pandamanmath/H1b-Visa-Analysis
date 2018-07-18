@@ -1,0 +1,20 @@
+REGISTER '/home/ayush/BigData/external_jars/piggybank-0.13.0.jar';			--Register external jar 'Piggy Bank.jar'
+DEFINE CSVExcelStorage org.apache.pig.piggybank.storage.CSVExcelStorage;  -- within the jar define a function CSVExcelStorage()  
+data = LOAD '/home/ayush/DatasetsandCodes/h1b_applications.csv' USING CSVExcelStorage() as 
+(s_no:int,
+case_status:chararray,
+employer_name:chararray,
+soc_name:chararray,
+job_title:chararray,
+full_time_position:chararray,
+prevailing_wage:int,
+year:chararray,
+worksite:chararray,
+longitute:double,
+latitute:double);		--load data
+
+noheader= filter data by $0>=1;   --remove header
+cleansed= filter noheader by $1 is not null and $1!='NA';
+temp= group cleansed  by $7;
+total= foreach temp generate group,COUNT(cleansed.$1);
+--describe total;dump total;

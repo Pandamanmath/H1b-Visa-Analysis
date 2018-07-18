@@ -1,0 +1,6 @@
+select job_title,year,count(case_status ) as temp from h1b_applications where year =2011group by job_title,year order by temp desclimit10; 
+select job_title,year,count(case_status ) as temp from h1b_applications where year =2012group by job_title,year order by temp desclimit10; 
+select job_title,year,count(case_status ) as temp from h1b_applications where year =2013group by job_title,year order by temp desclimit10;
+select job_title,year,count(case_status ) as temp from h1b_applications where year =2014group by job_title,year order by temp desclimit10; 
+select job_title,year,count(case_status ) as temp from h1b_applications where year =2015group by job_title,year order by temp desclimit10; 
+select job_title,year,count(case_status ) as temp from h1b_applications where year =2016group by job_title,year order by temp desclimit10;
